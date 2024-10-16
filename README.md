@@ -1,123 +1,148 @@
+
 # LARAVEL-DESDE-CERO (TUTO)
 
 
 
 
-PASO 1 -- CREAR PROYECTO
+**PASO 1 -- CREAR PROYECTO**
 
--> sudo composer create-project laravel/laravel nombre-proyecto  //crear el proyecto en htdocks con el xamp encendidosudo 
+    sudo composer create-project laravel/laravel nombre-proyecto  //crear el proyecto en htdocks con el xamp encendidosudo
 
-PASO 2 -- DAR PERMISOS AL PROYECTO (SOLO LINUX)
+ 
 
--> sudo chmod -R 777 nombre-proyecto //damos todos los permisos
+**PASO 2 -- DAR PERMISOS AL PROYECTO *(SOLO LINUX)***
 
-PASO 3 -- CAMBIAR DATOS DE ACCESO A LA BASE DE DATOS 
-//Entramos al visual studio a nustro proyecto y editamos el arhcivo .env para poner el puerto y el nombre de la base de datos necesario.
+`sudo chmod -R 777 nombre-proyecto //damos todos los permisos`
 
-PASO 4 -- INSTALAR DEPENDENCIAS DEL JETSTREAM AL PROYECTO CON COMPOSER
+**PASO 3 -- CAMBIAR DATOS DE ACCESO A LA BASE DE DATOS** 
 
--> sudo composer require laravel/jetstream 
+> Entramos al visual studio a nustro proyecto y editamos el arhcivo .env para poner el puerto y el nombre de la base de datos necesario.
 
-PASO 5 -- EJECUTAR EL SERVICIO DEL LARAVEL PARA PODER ACCEDER DESDE UN NAVEGADOR Y USAR EL TINKER
-//Esto debe estar siempre ejecutansode con lo cual debemos ponerlo en otro terminal
+**PASO 4 -- INSTALAR DEPENDENCIAS DEL JETSTREAM AL PROYECTO CON COMPOSER**
 
--> php artisan serve
+`sudo composer require laravel/jetstream` 
 
-PASO 6 -- CREAMOS LA BASE DE DATOS HACIENDO UNA MIGRACION SIN SEEDER
+**PASO 5 -- EJECUTAR EL SERVICIO DEL LARAVEL PARA PODER ACCEDER DESDE UN NAVEGADOR Y USAR EL TINKER**
 
--> php artisan migrate //cremos la base de datos
+> Esto debe estar siempre ejecutansode con lo cual debemos ponerlo en otro terminal
 
-PASO 7 -- INSTALAMOS EL JETSTREAM A NUESTRO PROYECTO
+`php artisan serve`
 
--> php artisan jetstream:install livewire
+**PASO 6 -- CREAMOS LA BASE DE DATOS HACIENDO UNA MIGRACION SIN SEEDER**
+//cremos la base de datos
 
-PASO 8 -- AHORA TENEMOS QUE HACER UNA MIGRACION CON LOS SEEDER Y NUEVAS TABLAS A LA BASE DE DATOS
+    php artisan migrate
 
--> php artisan migrate:fresh --seed
+**PASO 7 -- INSTALAMOS EL JETSTREAM A NUESTRO PROYECTO**
 
-PASO 9 --- YA HEMOS INSTALADO TODO LO NECESARIO
-//Aqui ya tenemos el proyecto funcando y con el login funcionando
+ `php artisan jetstream:install livewire`
 
-PASO 10 -- CREAMOS LOS MODELOS Y MIGRACIONES  -> TODOS LOS MODELOS TIENEN QUE ESTAR CON LA PRIMERA LETRA EN MAYUSCULA -> Ejemplo
-//Una migracion sirve para crear la estructura de una base de datos y un modelo define relaciones con otras tablas y los datos que se van a extraer de la base de datos
+**PASO 8 -- AHORA TENEMOS QUE HACER UNA MIGRACION CON LOS SEEDER Y NUEVAS TABLAS A LA BASE DE DATOS**
 
--> php artisan make:model nombreTabla -m
+     php artisan migrate:fresh --seed
 
-PASO 11 -- CAMBIAMOS ORDEN SI ES NECESARIO DE LAS MIGRACIONES
-//Esto se va a realizar en caso de necesitarlo ya que depende de las relaciones de nustra base de datos
+**PASO 9 --- YA HEMOS INSTALADO TODO LO NECESARIO**
 
-Vamos a nuestra carpeta migraciones y cambiamos el orden necesario.
+> Aqui ya tenemos el proyecto funcando y con el login funcionando
 
-PASO 12 -- EMPEZAMOS A MODIFICAR LAS MIGRACIONES QUE ACABAMOS DE HACER
-//Aqui vamos a añadir los campos que necesesitemos a nuestras tablas 
+**PASO 10 -- CREAMOS LOS MODELOS Y MIGRACIONES  -> TODOS LOS MODELOS TIENEN QUE ESTAR CON LA PRIMERA LETRA EN MAYUSCULA -> *Ejemplo***
 
-Para añadir cualquier campo debemos poner un $table = tipoDato('nombreDelDato');
+> Una migracion sirve para crear la estructura de una base de datos y un modelo define relaciones con otras tablas y los datos que se van a extraer de la base de datos
 
-PASO 13 -- EMPEZAMOS A MODIFICAR LAS MIGRACIONES EXISTENTES
-//Aqui vamos a añadir mas campos a la base de datos depende de cada caso lo que necesitemos
+ php artisan make:model nombreTabla -m
 
-En un caso en el que queramos setear una relacion con otra base de datos añadimos:
+**PASO 11 -- CAMBIAMOS ORDEN SI ES NECESARIO DE LAS MIGRACIONES**
 
-$table->unsignedBigInteger('id_rol')->nullable();
-$table->foreign('id_rol')->references('id')->on('rols');
+> Esto se va a realizar en caso de necesitarlo ya que depende de las relaciones de nustra base de datos
 
-PASO 14 -- MODIFICAMOS LOS MODELOS PARA AÑADIR LAS RELACIONES
-//Nos vamos al modelo creado y añadimos los campos hidden para que se oculten los atributos, normalmente se suelen poner solo contraseñas o tiempos de creacion
+*Vamos a nuestra carpeta migraciones y cambiamos el orden necesario.*
 
- protected $hidden = ['atributo', 'atributo'];
+**PASO 12 -- EMPEZAMOS A MODIFICAR LAS MIGRACIONES QUE ACABAMOS DE HACER**
 
-//Ahora vamos a poner las relaciones entre una tabla y otra, debemos poner el nobre de las funciones en plural, acabado en s
+> Aqui vamos a añadir los campos que necesesitemos a nuestras tablas
 
-HASMANY -> Es una relacion uno a muchos usada para cuando un modelo tiene relacion con otros muchos modelos
+ 
+
+*Para añadir cualquier campo debemos poner un* `$table = tipoDato('nombreDelDato');`
+
+**PASO 13 -- EMPEZAMOS A MODIFICAR LAS MIGRACIONES EXISTENTES**
+
+> Aqui vamos a añadir mas campos a la base de datos depende de cada caso lo que necesitemos
+
+*En un caso en el que queramos setear una relacion con otra base de datos añadimos:*
+
+    $table->unsignedBigInteger('id_rol')->nullable();
+    $table->foreign('id_rol')->references('id')->on('rols');
+
+**PASO 14 -- MODIFICAMOS LOS MODELOS PARA AÑADIR LAS RELACIONES**
+
+> Nos vamos al modelo creado y añadimos los campos hidden para que se oculten los atributos, normalmente se suelen poner solo contraseñas o tiempos de creacion.
+
+ 
+
+    protected $hidden = ['atributo', 'atributo'];
+
+> Ahora vamos a poner las relaciones entre una tabla y otra, debemos poner el nobre de las funciones en plural, acabado en s
+
+**HASMANY** *-> Es una relacion uno a muchos usada para cuando un modelo tiene relacion con otros muchos modelos*
    
-    public function nombreTablaDeLaRelacion(): HasMany
-{
-    return $this->hasMany(objetoTablaRelacion::class, 'claveForanea', 'claveForaneaReferencia');
-}
 
-BELONGSTO -> Es una relacion muchos a uno usada cuando uno o muchos modelo tiene relacion con otro modelo
+public function nombreTablaDeLaRelacion(): HasMany
+    {
+        return $this->hasMany(objetoTablaRelacion::class, 'claveForanea', 'claveForaneaReferencia');
+    }
 
-public function nombreTablaDeLaRelacion(): BelongsTo
-{
-    return $this->belongsTo(objetoTablaRelacion::class, 'claveForanea', 'claveForaneaReferencia');
-}
+**BELONGSTO** *-> Es una relacion muchos a uno usada cuando uno o muchos modelo tiene relacion con otro modelo*
 
-
-PASO 15 -- HACER LOS SEDDERS  -> TODOS LOS SEEDER TIENE QUE EMPEZAR EN MAYUSCULA Y EL SEEDER EN EL PALABRA -> EjemploSeeder
-//Desde un seeder vamos a introduccir datos a una tabla
-
--> php artisan make:seeder NombreSeeder
-
-PASO 16 -- MODIFICAR SEEDER
-//Vamos a ir creando objetos en estos seeders, para meter datos a mano, o podemos usar la funcion NombreModelo::factory(10)->create(); para hacer automaticamente aleatoriamente el numero indicado
-
-$user = new nombreClase();
-$user => atributoAModificar = 'informacion';
-$user->save();
+    public function nombreTablaDeLaRelacion(): BelongsTo
+    {
+        return $this->belongsTo(objetoTablaRelacion::class, 'claveForanea', 'claveForaneaReferencia');
+    }
 
 
-PASO 17 -- MODIFICAMOS EL DATABASESEEDER
-//Aqui tenemos que modificar el seeder de la base de datos, aqui tenemos que poner el orden en el que se ejecutan los serders creados
+**PASO 15 -- HACER LOS SEDDERS  -> TODOS LOS SEEDER TIENE QUE EMPEZAR EN MAYUSCULA Y EL SEEDER EN EL PALABRA -> *EjemploSeeder***
 
- $this->call(nombreDelSeeder::class);
+> Desde un seeder vamos a introduccir datos a una tabla
 
-PASO 18 -- CREAMOS UNA FACTORIA -> TODOS LAS FACTORIAS TIENE QUE SER EN MAYUSCULAS LA PRIMAERA LETRA Y QUE PONGA FACTORY EN EL NOMBRE -> EjemploFactory
-//Creamos una factoria para insertar los datos de manera aleatorios
+ `php artisan make:seeder NombreSeeder`
+
+**PASO 16 -- MODIFICAR SEEDER**
+
+> Vamos a ir creando objetos en estos seeders, para meter datos a mano, o podemos usar la funcion `NombreModelo::factory(10)->create();` para hacer automaticamente aleatoriamente el numero indicado
+
+*Añadir datos de manera manual:*
+
+    $user = new nombreClase();
+    $user => atributoAModificar = 'informacion';
+    $user->save();
 
 
--> php artisan make:factory NombreFactory
+**PASO 17 -- MODIFICAMOS EL DATABASESEEDER**
 
-'nombreDato'=>faker->tipoDato
+> Aqui tenemos que modificar el seeder de la base de datos, aqui tenemos que poner el orden en el que se ejecutan los serders creados
+
+     $this->call(nombreDelSeeder::class);
+
+**PASO 18 -- CREAMOS UNA FACTORIA -> TODOS LAS FACTORIAS TIENE QUE SER EN MAYUSCULAS LA PRIMAERA LETRA Y QUE PONGA FACTORY EN EL NOMBRE -> *EjemploFactory***
+
+> Creamos una factoria para insertar los datos de manera aleatorios
 
 
-PASO 19 -- EJECUTAMOS UNA MIGRACON CON FRESH
+    php artisan make:factory NombreFactory
 
--> php artisan migrate:fresh --seed
+*Añadimos las lineas que generan aleatoriamente los datos*
 
-PASO 20 -- AHORA COMPROBAMOS QUE SE HAN CREADO LOS USUARIOS
+    'nombreDato'=>faker->tipoDato
 
--> php artisan tinker
 
--> use App\Models\NombreModelo
+**PASO 19 -- EJECUTAMOS UNA MIGRACON CON FRESH**
 
--> NombreModelo::all();
+     php artisan migrate:fresh --seed
+
+**PASO 20 -- AHORA COMPROBAMOS QUE SE HAN CREADO LOS USUARIOS**
+
+    php artisan tinker
+
+    use App\Models\NombreModelo
+    
+    NombreModelo::all();
