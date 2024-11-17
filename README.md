@@ -119,6 +119,10 @@ php artisan migrate:fresh --seed
 ## PASO 20: Comprobar Usuarios en Tinker
 ```bash
 php artisan tinker
+```
+```bash
 use App\Models\NombreModelo;
+```
+```bash
 NombreModelo::all();
 ```
