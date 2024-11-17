@@ -107,9 +107,9 @@ Usar clase Faker para generar datos aleatorios
 ```php
 'nombreDato' => $faker->tipoDato,
 ```
-# Tipos de datos en Faker
+### Tipos de datos en Faker
 
-### 1. Texto
+#### 1. Texto
 - `name()`: Nombre completo.
 - `firstName()`: Primer nombre.
 - `lastName()`: Apellido.
@@ -119,17 +119,17 @@ Usar clase Faker para generar datos aleatorios
 - `word()`: Palabra aleatoria.
 - `text($maxNbChars = 200)`: Texto aleatorio.
 
-### 2. Números
+#### 2. Números
 - `randomNumber($nbDigits = null)`: Número aleatorio.
 - `randomFloat($nbMaxDecimals = null, $min = 0, $max = null)`: Número de punto flotante aleatorio.
 - `numberBetween($min, $max)`: Número aleatorio entre dos valores.
 
-### 3. Fechas
+#### 3. Fechas
 - `date($format = 'Y-m-d', $max = 'now')`: Fecha.
 - `dateTime($max = 'now')`: Fecha y hora.
 - `dateTimeBetween($startDate = '-1 years', $endDate = 'now')`: Fecha y hora entre dos fechas.
 
-### 4. Direcciones
+#### 4. Direcciones
 - `address()`: Dirección completa.
 - `city()`: Ciudad.
 - `country()`: País.
@@ -137,40 +137,47 @@ Usar clase Faker para generar datos aleatorios
 - `streetName()`: Nombre de la calle.
 - `streetAddress()`: Dirección de la calle.
 
-### 5. Contactos
+#### 5. Contactos
 - `email()`: Correo electrónico.
 - `phoneNumber()`: Número de teléfono.
 - `userName()`: Nombre de usuario.
 
-### 6. Datos de empresa
+#### 6. Datos de empresa
 - `company()`: Nombre de la empresa.
 - `jobTitle()`: Título de trabajo.
 - `catchPhrase()`: Frase publicitaria.
 
-### 7. Datos de productos
+#### 7. Datos de productos
 - `productName()`: Nombre de producto.
 - `price($min = 0, $max = null)`: Precio.
 
-### 8. Datos booleanos
+#### 8. Datos booleanos
 - `boolean($chanceOfGettingTrue = 50)`: Valor booleano.
 
-### 9. Datos de texto de tipo específico
+#### 9. Datos de texto de tipo específico
 - `text($maxNbChars = 200)`: Texto aleatorio con un número máximo de caracteres.
 
-### 10. Otros
+#### 10. Otros
 - `image($directory = 'public/images', $width = 640, $height = 480)`: Genera una imagen.
 - `uuid()`: Genera un UUID.
 
 
-
-
-
-## PASO 19: Ejecutar Migraciones Fresh con Seed
+## PASO 17: Ejecutar Migraciones Fresh con Seed
+Con el `migrate:fresh` estariamos generando las tablas de nuevo.
+Al añadir `--seed` estariamos ejecutando los seeder y factorias que esten configuradas.
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-## PASO 20: Comprobar Usuarios en Tinker
+## PASO 18: Comprobar Usuarios en Tinker
+En caso de querer comprobar si los datos generados por migraciones o factorias se han insertado en la base de datos podemos usar la herramienta **Tinker** o entrar en el gestor de bases de datos favorito.
+
+### Comprobacion desde gestor de BBDD 
+
+[http://localhost/phpmyadmin](http://localhost/phpmyadmin)
+
+### Comprobacion desde Tinker
+
 ```bash
 php artisan tinker
 ```
@@ -180,3 +187,5 @@ use App\Models\NombreModelo;
 ```bash
 NombreModelo::all();
 ```
+## PASO 19: Actualmente en desarrollo (17-11-24)
+
