@@ -181,10 +181,10 @@ En caso de querer comprobar si los datos generados por migraciones o factorias s
 ```bash
 php artisan tinker
 ```
-```bash
+```tinker
 use App\Models\NombreModelo;
 ```
-```bash
+```tinker
 NombreModelo::all();
 ```
 ## PASO 19: Actualmente en desarrollo (17-11-24)
