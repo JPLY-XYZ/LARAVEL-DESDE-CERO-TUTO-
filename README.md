@@ -54,6 +54,36 @@ Añadir campos necesarios como:
 ```php
 $table->tipoDato('nombreColumna');
 ```
+### Tipos de datos en una migración Laravel
+
+#### Tipos de texto
+- `string('nombre_columna', longitud)`: **String** - Cadena de caracteres de longitud variable (por defecto 255 caracteres).
+- `text('nombre_columna')`: **Text** - Cadena de caracteres de longitud larga, ideal para textos extensos.
+
+#### Tipos numéricos
+- `integer('nombre_columna')`: **Integer** - Número entero (4 bytes).
+- `bigInteger('nombre_columna')`: **Big Integer** - Número entero grande (8 bytes).
+- `smallInteger('nombre_columna')`: **Small Integer** - Número entero pequeño (2 bytes).
+- `tinyInteger('nombre_columna')`: **Tiny Integer** - Número entero muy pequeño (1 byte).
+- `float('nombre_columna', precisión, escala)`: **Float** - Número de punto flotante (4 bytes).
+- `double('nombre_columna', precisión, escala)`: **Double** - Número de punto flotante de doble precisión (8 bytes).
+- `decimal('nombre_columna', precisión, escala)`: **Decimal** - Número decimal con precisión y escala definidas.
+
+#### Tipos de fecha y hora
+- `date('nombre_columna')`: **Date** - Fecha (sin hora).
+- `dateTime('nombre_columna')`: **DateTime** - Fecha y hora.
+- `time('nombre_columna')`: **Time** - Hora (sin fecha).
+- `timestamp('nombre_columna')`: **Timestamp** - Marca de tiempo (fecha y hora).
+
+#### Tipos binarios y JSON
+- `binary('nombre_columna')`: **Binary** - Datos binarios.
+- `json('nombre_columna')`: **JSON** - Almacena datos en formato JSON.
+- `uuid('nombre_columna')`: **UUID** - Almacena un identificador único universal.
+
+#### Tipos enumerados
+- `enum('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Enum** - Valor que puede ser uno de los valores enumerados.
+- `set('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Set** - Conjunto de valores, donde se pueden seleccionar múltiples valores de la lista.
+
 
 ## PASO 11: Relacionar Tablas en **Migraciones**
 Ejemplo relación 1 a N:
