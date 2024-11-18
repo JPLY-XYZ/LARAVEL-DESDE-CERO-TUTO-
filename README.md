@@ -7,44 +7,137 @@
 # Guía de Laravel con Comandos Rápidos
 
 ## PASO 1: Crear Proyecto
+Para crear un proyecto en laravel podemos hacerlo de 2 maneras, usando *composer* o el *comando espcifico de laravel* 
+
+### CREAR PROYECTO CON COMPOSER
+Usamos el siguiente comando: 
 ```bash
-sudo composer create-project laravel/laravel nombre-proyecto
+composer create-project laravel/laravel nombre-proyecto
 ```
 
-## PASO 2: Configurar el Entorno
-Edita el archivo `.env` para configurar la base de datos y otras variables de entorno.
+### CREAR PROYECTO CON EL COMANDO DE LARAVEL
+Usamos el comando especifico para crear el proyecto:
+```bash
+laravel new nombre-proyecto
+```
+Al usar el comando nos empezara a pedir parametros de configuracion del proyecto:
+
+![LARAVEL 1](https://github.com/user-attachments/assets/13b4cbc4-8d3a-4850-907e-31198f81aab7)
+
+KIT DE INICIO
+
+OPT1 [none]
+No se instalará ningún kit de inicio, resultando en un proyecto Laravel básico sin configuraciones adicionales.
+
+OPT2 [breeze]
+**Laravel Breeze:** Solución ligera para agregar autenticación. Incluye:
+- Registro de usuarios
+- Inicio de sesión
+- Recuperación de contraseñas
+- Vistas simples basadas en Blade o componentes como Vue o React.
+
+OPT3 [jetstream]
+**Laravel Jetstream:** Kit avanzado para aplicaciones modernas. Incluye todo lo de Breeze, más:
+- Gestión de equipos
+- Sesiones de usuario
+- Soporte para Livewire o Inertia.js.
+
+FRAMEWORK DE PRUEBAS
+
+OPT1 Pest
+- Moderno y minimalista.
+- Enfocado en simplicidad y legibilidad.
+- Sintaxis limpia y expresiva.
+- Compatible con PHPUnit.
+
+OPT2 PHPUnit
+- Estándar y ampliamente utilizado.
+- Sintaxis más detallada y tradicional.
+- Ideal para quienes prefieren el enfoque clásico.
+
+![LARAVEL 2](https://github.com/user-attachments/assets/2d4dce59-0fb3-4163-a87a-a4aebf533a4d)
+
+En este paso nos solicita la base de datos que estemos usando, y posteriormente nos pide si queremos hacer una migracion de la base de datos para crear las tablas de usuarios y tal.
 
 
+## PASO 2: Empezar a trabajar con laravel.
+En este paso ya tendriamos creado el proyecto, y podemos empezar a cambiar cosas, para ello debemos abrir la carpeta del proyecto con el editor de texto preferido.
 
+### Lanzar nuestro proyecto
+Para iniciar nuestro proyecto y poder acceder desde el navegador debemos ejecutar el comando:
 
-## PASO 3: Ejecutar el Servidor Laravel
 ```bash
 php artisan serve
 ```
+![LARAVEL3](https://github.com/user-attachments/assets/8da18534-ee64-438f-8f3d-245ea23901fe)
+Desde este link entramos en nuestro proyecto.
 
-## PASO 4: Crear Base de Datos con Migraciones
+## PASO 3: Creacion de modelos y migraciones.
+
+### ¿Que es un modelo?
+En Laravel, un modelo es una representación de una tabla en la base de datos que permite interactuar con ella utilizando Eloquent, un ORM que facilita las operaciones CRUD. Los modelos también permiten definir relaciones entre tablas y contener lógica de negocio relacionada con los datos.
+
+### ¿Que es una migracion?
+Una migración en Laravel es una herramienta que permite definir y modificar la estructura de la base de datos de manera programática. Las migraciones facilitan la creación, modificación y eliminación de tablas y columnas, permitiendo mantener un control de versiones de la base de datos y facilitar la colaboración en equipos de desarrollo.
+
+
+### Creacion de modelos y migraciones
+Para crear una modelo y su correspondiente migracion podemos hacerlo de varias maneras, pero la mas comun es hacerlas simultaneamente, para ello usamos el siguiente comando:
+
 ```bash
-php artisan migrate
+php artisan make:model NombreTabla -m
 ```
+`-m` Indica que se creen las migraciones al mismo tiempo de los modelos.
+
+
+## PASO 4: Edicion campos de las migraciones.
+Como hemos dicho, las migraciones se usan para definir los campos de las tablas de nuestra base de datos, para ello usamos la siguiente estructura:
+
+```php
+$table->tipoDato('nombreColumna');
+```
+![LARAVEL4](https://github.com/user-attachments/assets/07418c96-7f4a-4132-8b14-b545e4b7c13d)
+En este ejemplo se ha añadido un campo llamado `name`.
+
+### Tipos de datos en una migración Laravel
+
+#### Tipos de texto
+- `string('nombre_columna', longitud)`: **String** - Cadena de caracteres de longitud variable (por defecto 255 caracteres).
+- `text('nombre_columna')`: **Text** - Cadena de caracteres de longitud larga, ideal para textos extensos.
+
+#### Tipos numéricos
+- `integer('nombre_columna')`: **Integer** - Número entero (4 bytes).
+- `bigInteger('nombre_columna')`: **Big Integer** - Número entero grande (8 bytes).
+- `smallInteger('nombre_columna')`: **Small Integer** - Número entero pequeño (2 bytes).
+- `tinyInteger('nombre_columna')`: **Tiny Integer** - Número entero muy pequeño (1 byte).
+- `float('nombre_columna', precisión, escala)`: **Float** - Número de punto flotante (4 bytes).
+- `double('nombre_columna', precisión, escala)`: **Double** - Número de punto flotante de doble precisión (8 bytes).
+- `decimal('nombre_columna', precisión, escala)`: **Decimal** - Número decimal con precisión y escala definidas.
+
+#### Tipos de fecha y hora
+- `date('nombre_columna')`: **Date** - Fecha (sin hora).
+- `dateTime('nombre_columna')`: **DateTime** - Fecha y hora.
+- `time('nombre_columna')`: **Time** - Hora (sin fecha).
+- `timestamp('nombre_columna')`: **Timestamp** - Marca de tiempo (fecha y hora).
+
+#### Tipos binarios y JSON
+- `binary('nombre_columna')`: **Binary** - Datos binarios.
+- `json('nombre_columna')`: **JSON** - Almacena datos en formato JSON.
+- `uuid('nombre_columna')`: **UUID** - Almacena un identificador único universal.
+
+#### Tipos enumerados
+- `enum('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Enum** - Valor que puede ser uno de los valores enumerados.
+- `set('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Set** - Conjunto de valores, donde se pueden seleccionar múltiples valores de la lista.
+
 
 ## PASO 5: Instalar Jetstream (si es necesario)
 ```bash
 php artisan jetstream:install livewire
 ```
 
-## PASO 6: Migrar con Seeder
-```bash
-php artisan migrate:fresh --seed
-```
 
-## PASO 7: Proyecto Configurado
-El proyecto ya tiene el login funcional.
 
-## PASO 8: Crear Modelos y Migraciones
-`-m` Indica que se creen las migraciones al mismo tiempo de los modelos.
-```bash
-php artisan make:model NombreTabla -m
-```
+//////HASTA AQUI HEMOS LLEGADO\\\\\\\
 
 ## PASO 9: Cambiar Orden de Migraciones
 Edita las migraciones si es necesario en `database/migrations`.
