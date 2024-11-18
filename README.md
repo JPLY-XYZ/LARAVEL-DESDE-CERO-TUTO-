@@ -24,7 +24,7 @@ Al usar el comando nos empezara a pedir parametros de configuracion del proyecto
 
 ![LARAVEL 1](https://github.com/user-attachments/assets/13b4cbc4-8d3a-4850-907e-31198f81aab7)
 
-KIT DE INICIO
+-> KIT DE INICIO
 
 OPT1 [none]
 No se instalará ningún kit de inicio, resultando en un proyecto Laravel básico sin configuraciones adicionales.
@@ -42,7 +42,7 @@ OPT3 [jetstream]
 - Sesiones de usuario
 - Soporte para Livewire o Inertia.js.
 
-FRAMEWORK DE PRUEBAS
+-> FRAMEWORK DE PRUEBAS
 
 OPT1 Pest
 - Moderno y minimalista.
@@ -70,6 +70,7 @@ Para iniciar nuestro proyecto y poder acceder desde el navegador debemos ejecuta
 php artisan serve
 ```
 ![LARAVEL3](https://github.com/user-attachments/assets/8da18534-ee64-438f-8f3d-245ea23901fe)
+
 Desde este link entramos en nuestro proyecto.
 
 ## PASO 3: Creacion de modelos y migraciones.
@@ -97,6 +98,7 @@ Como hemos dicho, las migraciones se usan para definir los campos de las tablas 
 $table->tipoDato('nombreColumna');
 ```
 ![LARAVEL4](https://github.com/user-attachments/assets/07418c96-7f4a-4132-8b14-b545e4b7c13d)
+
 En este ejemplo se ha añadido un campo llamado `name`.
 
 ### Tipos de datos en una migración Laravel
@@ -129,6 +131,55 @@ En este ejemplo se ha añadido un campo llamado `name`.
 - `enum('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Enum** - Valor que puede ser uno de los valores enumerados.
 - `set('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Set** - Conjunto de valores, donde se pueden seleccionar múltiples valores de la lista.
 
+## PASO 5: Relaciones entre tablas
+
+### Relacionar Tablas en **Migraciones**
+En caso de querer una relacion 1 a N debemos asignar un campo a que sea la clave foranea de otra tabla.
+
+Debemos usar la siquiente estructura:
+```php
+$table->unsignedBigInteger('id_rol')->nullable();
+$table->foreign('id_rol')->references('id')->on('rols');
+```
+![LARAVEL5](https://github.com/user-attachments/assets/290a3e57-af2d-4a0f-9d3d-65c1ea4c57e1)
+
+En este ejemplo estmos relacionando la tabla users con mi tabla tasks, trayendonos la id del usuario como clave foranea ademas indicando que cuando un usuario se borre se borren las tareas. 
+
+### Relacionar Tablas en **Modelos**
+Para hacer una relacion desde el modelo, debemos realizar estos pasos dependiendo del tipo de relacion necesaria.
+
+Relación 1 a Muchos **(hasMany)**:
+```php
+public function nombreRelacion(): HasMany
+{
+    return $this->hasMany(ModeloRelacion::class, 'claveForanea', 'claveReferencia');
+}
+```
+
+![LARAVEL5](https://github.com/user-attachments/assets/55114836-f428-46aa-879f-deb989eef730)
+
+
+Relación Muchos a Muchos o 1 a 1 **(belongsTo)**:
+```php
+public function nombreRelacion(): BelongsTo
+{
+    return $this->belongsTo(ModeloRelacion::class, 'claveForanea', 'claveReferencia');
+}
+```
+
+![LARAVEL6](https://github.com/user-attachments/assets/d11a5ff0-ba27-4ce0-a573-c81097bb1f6e)
+
+
+## PASO 6: Modificacion del orden de las migraciones.
+Las migraciones se crean segun se encuentren, en caso de que una tabla tenga que ser creada antes que otra, para ello debemos modificar el nombre de nuestra migracion, y añadir algunn numero.
+
+![LARAVEL7](https://github.com/user-attachments/assets/ef8a92df-7180-42ea-a66c-7c2275188f01)
+
+En este caso quiero que la tabla tasks se cree despues de usuarios, para ello he añadido varios 1 al inicio
+
+
+//////HASTA AQUI HEMOS LLEGADO\\\\\\\
+LA SIGUIENTE PARTE NO ESTA REFACTORIZADA
 
 ## PASO 5: Instalar Jetstream (si es necesario)
 ```bash
@@ -137,7 +188,7 @@ php artisan jetstream:install livewire
 
 
 
-//////HASTA AQUI HEMOS LLEGADO\\\\\\\
+
 
 ## PASO 9: Cambiar Orden de Migraciones
 Edita las migraciones si es necesario en `database/migrations`.
