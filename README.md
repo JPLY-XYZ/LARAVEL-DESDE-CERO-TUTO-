@@ -1,10 +1,26 @@
 
 # LARAVEL-DESDE-CERO (TUTO)
+# INDICE
+
+## FASE 1: CREACION DEL PROYECTO Y USO DE BASE DE DATOS
+###  1.CREACION PROYECTO
+###  2.EJECUCION DEL PROYECTO
+###  3.MODELOS Y MIGRACIONES
+###  4.EDITAR LAS MIGRACIONES
+###  5.RELACIONES ENTRE TABLAS
+###  6.ORDENAR MIGRACIONES
+###  7.USO SEEDER Y FACTORIAS
+###  8.ACTUALIZAR DATABASESEEDER.PHP
+###  9.EJECUTAR MIGRACIONES Y FACTORIAS
+###  10.COMPROBAR DATOS USANDO TINKER O PHPMYADMIN
+
+## FASE 2: AÑADIR FUNCIONALIDAD REAL A LA WEB
 
 
+# 
 
 
-# Guía de Laravel con Comandos Rápidos
+# FASE 1: CREACION DEL PROYECTO Y USO DE BASE DE DATOS
 
 ## PASO 1: Crear Proyecto
 Para crear un proyecto en laravel podemos hacerlo de 2 maneras, usando *composer* o el *comando espcifico de laravel* 
@@ -178,112 +194,45 @@ Las migraciones se crean segun se encuentren, en caso de que una tabla tenga que
 En este caso quiero que la tabla tasks se cree despues de usuarios, para ello he añadido varios 1 al inicio
 
 
-//////HASTA AQUI HEMOS LLEGADO\\\\\\\
-LA SIGUIENTE PARTE NO ESTA REFACTORIZADA
+## PASO 7: Insertar datos en la base de datos mediante Seeders o Factorias
 
-## PASO 5: Instalar Jetstream (si es necesario)
-```bash
-php artisan jetstream:install livewire
-```
+### ¿Que es un seeder?
+Un seeder en Laravel es una clase que permite llenar la base de datos con datos de prueba o iniciales de manera automática. Se utiliza para crear registros en las tablas de la base de datos de forma rápida y sencilla durante el desarrollo.
+### ¿Que es una factoria?
+Una factoría en Laravel es una herramienta que permite generar instancias de modelos con datos falsos o de prueba de manera sencilla. Se utiliza junto con el paquete Faker para crear datos aleatorios y realistas, facilitando así la creación de registros en la base de datos durante las pruebas o el desarrollo.
 
-
-
-
-
-## PASO 9: Cambiar Orden de Migraciones
-Edita las migraciones si es necesario en `database/migrations`.
-
-## PASO 10: Modificar Migraciones
-Añadir campos necesarios como:
-```php
-$table->tipoDato('nombreColumna');
-```
-### Tipos de datos en una migración Laravel
-
-#### Tipos de texto
-- `string('nombre_columna', longitud)`: **String** - Cadena de caracteres de longitud variable (por defecto 255 caracteres).
-- `text('nombre_columna')`: **Text** - Cadena de caracteres de longitud larga, ideal para textos extensos.
-
-#### Tipos numéricos
-- `integer('nombre_columna')`: **Integer** - Número entero (4 bytes).
-- `bigInteger('nombre_columna')`: **Big Integer** - Número entero grande (8 bytes).
-- `smallInteger('nombre_columna')`: **Small Integer** - Número entero pequeño (2 bytes).
-- `tinyInteger('nombre_columna')`: **Tiny Integer** - Número entero muy pequeño (1 byte).
-- `float('nombre_columna', precisión, escala)`: **Float** - Número de punto flotante (4 bytes).
-- `double('nombre_columna', precisión, escala)`: **Double** - Número de punto flotante de doble precisión (8 bytes).
-- `decimal('nombre_columna', precisión, escala)`: **Decimal** - Número decimal con precisión y escala definidas.
-
-#### Tipos de fecha y hora
-- `date('nombre_columna')`: **Date** - Fecha (sin hora).
-- `dateTime('nombre_columna')`: **DateTime** - Fecha y hora.
-- `time('nombre_columna')`: **Time** - Hora (sin fecha).
-- `timestamp('nombre_columna')`: **Timestamp** - Marca de tiempo (fecha y hora).
-
-#### Tipos binarios y JSON
-- `binary('nombre_columna')`: **Binary** - Datos binarios.
-- `json('nombre_columna')`: **JSON** - Almacena datos en formato JSON.
-- `uuid('nombre_columna')`: **UUID** - Almacena un identificador único universal.
-
-#### Tipos enumerados
-- `enum('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Enum** - Valor que puede ser uno de los valores enumerados.
-- `set('nombre_columna', ['valor1', 'valor2', 'valor3'])`: **Set** - Conjunto de valores, donde se pueden seleccionar múltiples valores de la lista.
-
-
-## PASO 11: Relacionar Tablas en **Migraciones**
-Ejemplo relación 1 a N:
-```php
-$table->unsignedBigInteger('id_rol')->nullable();
-$table->foreign('id_rol')->references('id')->on('rols');
-```
-
-## PASO 12: Relacionar Tablas en **Modelos**
-Relación 1 a Muchos **(hasMany)**:
-```php
-public function nombreRelacion(): HasMany
-{
-    return $this->hasMany(ModeloRelacion::class, 'claveForanea', 'claveReferencia');
-}
-```
-Relación Muchos a Muchos o 1 a 1 **(belongsTo)**:
-```php
-public function nombreRelacion(): BelongsTo
-{
-    return $this->belongsTo(ModeloRelacion::class, 'claveForanea', 'claveReferencia');
-}
-```
-
-## PASO 13: Crear Seeder
+### Creacion de un seeder
+Para crear un seeder debemos usar el siguiente comando:
 ```bash
 php artisan make:seeder NombreSeeder
 ```
-
-## PASO 14: Modificar Seeder
-Inserta datos manualmente:
+Una vez creado el seeder, debemos editarlo para añadir los datos que queramos introduccir usando la siqiuente estructura.
 ```php
 $user = new NombreClase();
 $user->atributo = 'valor';
 $user->save();
 ```
+`$user` puede ser cambiado por cualquier nombre.
 
-## PASO 15: Modificar DatabaseSeeder **IMPORTANTE**
-En caso de **NO** modificar no se ejecutaran las migraciones
-```php
-$this->call(NombreSeeder::class);
-```
+Hay que recordar que si no ponemos `->save();` los datos no se introducciran en la base de datos.
 
-## PASO 16: Crear Factoría
-Inserta datos automaticamente:
+![LARAVEL8](https://github.com/user-attachments/assets/cdf512ff-7c74-411b-b2d5-cb2588a05778)
+
+### Creacion de una factoria
+Para crear una factoria debemos usar el siguiente comando:
 ```bash
 php artisan make:factory NombreFactory
 ```
-Define datos en la factoría:
-Usar clase Faker para generar datos aleatorios
+
+En las factorias se usa la clase `Faker`, esta es usada para generar datos de manera aleatoria usando la siguiente estructura:
 ```php
 'nombreDato' => $faker->tipoDato,
 ```
-### Tipos de datos en Faker
+![LARAVEL9](https://github.com/user-attachments/assets/9e48ca7b-17c7-48d4-9a10-675f825eb50f)
 
-#### 1. Texto
+#### Tipos de datos en Faker
+
+<h5> 1. Texto </h5>
 - `name()`: Nombre completo.
 - `firstName()`: Primer nombre.
 - `lastName()`: Apellido.
@@ -293,57 +242,80 @@ Usar clase Faker para generar datos aleatorios
 - `word()`: Palabra aleatoria.
 - `text($maxNbChars = 200)`: Texto aleatorio.
 
-#### 2. Números
+<h5> 2. Números </h5>
+
 - `randomNumber($nbDigits = null)`: Número aleatorio.
 - `randomFloat($nbMaxDecimals = null, $min = 0, $max = null)`: Número de punto flotante aleatorio.
 - `numberBetween($min, $max)`: Número aleatorio entre dos valores.
-
-#### 3. Fechas
+<h5> 3. Fechas </h5>
+ 
 - `date($format = 'Y-m-d', $max = 'now')`: Fecha.
 - `dateTime($max = 'now')`: Fecha y hora.
 - `dateTimeBetween($startDate = '-1 years', $endDate = 'now')`: Fecha y hora entre dos fechas.
+<h5> 4. Direcciones </h5>
 
-#### 4. Direcciones
 - `address()`: Dirección completa.
 - `city()`: Ciudad.
 - `country()`: País.
 - `postcode()`: Código postal.
 - `streetName()`: Nombre de la calle.
 - `streetAddress()`: Dirección de la calle.
+<h5> 5. Contactos </h5>
 
-#### 5. Contactos
 - `email()`: Correo electrónico.
 - `phoneNumber()`: Número de teléfono.
 - `userName()`: Nombre de usuario.
+<h5> 6. Datos de empresa </h5>
 
-#### 6. Datos de empresa
 - `company()`: Nombre de la empresa.
 - `jobTitle()`: Título de trabajo.
 - `catchPhrase()`: Frase publicitaria.
+<h5> 7. Datos de productos </h5>
 
-#### 7. Datos de productos
 - `productName()`: Nombre de producto.
 - `price($min = 0, $max = null)`: Precio.
+<h5> 8. Datos booleanos </h5>
 
-#### 8. Datos booleanos
 - `boolean($chanceOfGettingTrue = 50)`: Valor booleano.
+<h5> 9. Datos de texto de tipo específico </h5>
 
-#### 9. Datos de texto de tipo específico
 - `text($maxNbChars = 200)`: Texto aleatorio con un número máximo de caracteres.
+<h5> 10. Otros </h5>
 
-#### 10. Otros
 - `image($directory = 'public/images', $width = 640, $height = 480)`: Genera una imagen.
 - `uuid()`: Genera un UUID.
 
 
-## PASO 17: Ejecutar Migraciones Fresh con Seed
-Con el `migrate:fresh` estariamos generando las tablas de nuevo.
-Al añadir `--seed` estariamos ejecutando los seeder y factorias que esten configuradas.
+### PASO 8: Añadir el orden de ejecucion de `DatabaseSeeder.php`
+Una vez que ya hemos creado nuestros seeder, o factorias dependiendo de nuestras necesidades, tenemos que añadirlo a nuestro DatabaseSeeder para que se ejecuten al hacer un `php artisan migrate:fresh --seed` para ello usamos la siguiente estructura:
+
+-> SEEDER
+```php
+$this->call(NombreSeeder::class);
+```
+-> FACTORIA
+```php
+ NombreClase()->factory(Cantidad)->create();
+```
+
+![LARAVEL10](https://github.com/user-attachments/assets/be7125bc-9296-4628-8547-ccd96c5468f5)
+
+En este ejemplo estamos llamando a los seeders de la clase user y task y estamos usando las factorias de ambas para crear 10.
+
+! Si estamos usando factorias debemos añadir a nuestro modelo la linea `use Hasfactory;`
+![LARAVEL11](https://github.com/user-attachments/assets/6f8549fe-b1ba-4826-92dc-1ff32acc0bb6)
+
+
+## PASO 9: Ejecutar Migraciones y o Factorias con Seed
+Ahora que ya hemos configuarado el `DatabaseSeeder.php` podemos ejecutar la migracion, esto actualizara los datos en la base de datos.
 ```bash
 php artisan migrate:fresh --seed
 ```
+Con el `migrate:fresh` estariamos generando las tablas de nuevo.
+Al añadir `--seed` estariamos ejecutando los seeder y factorias que esten configuradas.
+![LARAVEL11](https://github.com/user-attachments/assets/b5a21540-9017-4b80-9beb-1e31dd010979)
 
-## PASO 18: Comprobar Usuarios en Tinker
+## PASO 10: Comprobar Usuarios en Tinker o PhpMyadmin
 En caso de querer comprobar si los datos generados por migraciones o factorias se han insertado en la base de datos podemos usar la herramienta **Tinker** o entrar en el gestor de bases de datos favorito.
 
 ### Comprobacion desde gestor de BBDD 
@@ -361,5 +333,20 @@ use App\Models\NombreModelo;
 ```tinker
 NombreModelo::all();
 ```
-## PASO 19: Actualmente en desarrollo (17-11-24)
+
+
+# FASE 2: AÑADIR FUNCIONALIDAD REAL A LA WEB
+
+
+
+
+
+
+
+
+
+
+
+
+
 
