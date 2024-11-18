@@ -1,5 +1,10 @@
-
 # LARAVEL-DESDE-CERO (TUTO)
+![IMG](https://github.com/user-attachments/assets/c6e02fe6-b96e-409b-a887-3951473eccf4)
+CREATED BY JPLY-XYZ FOR DAW 2024/25
+
+
+
+
 # INDICE
 
 ## FASE 1: CREACION DEL PROYECTO Y USO DE BASE DE DATOS
