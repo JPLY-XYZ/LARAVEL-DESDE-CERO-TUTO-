@@ -96,10 +96,10 @@ Desde este link entramos en nuestro proyecto.
 
 ## PASO 3: Creacion de modelos y migraciones.
 
-### ¿Que es un modelo?
+### ¿Que es un modelo? *(Generado por IA)*
 En Laravel, un modelo es una representación de una tabla en la base de datos que permite interactuar con ella utilizando Eloquent, un ORM que facilita las operaciones CRUD. Los modelos también permiten definir relaciones entre tablas y contener lógica de negocio relacionada con los datos.
 
-### ¿Que es una migracion?
+### ¿Que es una migracion? *(Generado por IA)*
 Una migración en Laravel es una herramienta que permite definir y modificar la estructura de la base de datos de manera programática. Las migraciones facilitan la creación, modificación y eliminación de tablas y columnas, permitiendo mantener un control de versiones de la base de datos y facilitar la colaboración en equipos de desarrollo.
 
 
@@ -122,7 +122,7 @@ $table->tipoDato('nombreColumna');
 
 En este ejemplo se ha añadido un campo llamado `name`.
 
-### Tipos de datos en una migración Laravel
+### Tipos de datos en una migración Laravel *(Generado por IA)*
 
 #### Tipos de texto
 - `string('nombre_columna', longitud)`: **String** - Cadena de caracteres de longitud variable (por defecto 255 caracteres).
@@ -201,9 +201,9 @@ En este caso quiero que la tabla tasks se cree despues de usuarios, para ello he
 
 ## PASO 7: Insertar datos en la base de datos mediante Seeders o Factorias
 
-### ¿Que es un seeder?
+### ¿Que es un seeder? *(Generado por IA)*
 Un seeder en Laravel es una clase que permite llenar la base de datos con datos de prueba o iniciales de manera automática. Se utiliza para crear registros en las tablas de la base de datos de forma rápida y sencilla durante el desarrollo.
-### ¿Que es una factoria?
+### ¿Que es una factoria? *(Generado por IA)*
 Una factoría en Laravel es una herramienta que permite generar instancias de modelos con datos falsos o de prueba de manera sencilla. Se utiliza junto con el paquete Faker para crear datos aleatorios y realistas, facilitando así la creación de registros en la base de datos durante las pruebas o el desarrollo.
 
 ### Creacion de un seeder
@@ -235,7 +235,7 @@ En las factorias se usa la clase `Faker`, esta es usada para generar datos de ma
 ```
 ![LARAVEL9](https://github.com/user-attachments/assets/9e48ca7b-17c7-48d4-9a10-675f825eb50f)
 
-#### Tipos de datos en Faker
+#### Tipos de datos en Faker *(Generado por IA)*
 
 <h5> 1. Texto </h5>
 
