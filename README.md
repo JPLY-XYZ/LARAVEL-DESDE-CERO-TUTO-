@@ -233,6 +233,7 @@ En las factorias se usa la clase `Faker`, esta es usada para generar datos de ma
 #### Tipos de datos en Faker
 
 <h5> 1. Texto </h5>
+
 - `name()`: Nombre completo.
 - `firstName()`: Primer nombre.
 - `lastName()`: Apellido.
