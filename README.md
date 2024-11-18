@@ -65,13 +65,13 @@ OPT3 [jetstream]
 
 -> FRAMEWORK DE PRUEBAS
 
-OPT1 Pest
+OPT1 [Pest]
 - Moderno y minimalista.
 - Enfocado en simplicidad y legibilidad.
 - Sintaxis limpia y expresiva.
 - Compatible con PHPUnit.
 
-OPT2 PHPUnit
+OPT2 [PHPUnit]
 - Estándar y ampliamente utilizado.
 - Sintaxis más detallada y tradicional.
 - Ideal para quienes prefieren el enfoque clásico.
@@ -123,6 +123,7 @@ $table->tipoDato('nombreColumna');
 En este ejemplo se ha añadido un campo llamado `name`.
 
 ### Tipos de datos en una migración Laravel *(Generado por IA)*
+
 
 #### Tipos de texto
 - `string('nombre_columna', longitud)`: **String** - Cadena de caracteres de longitud variable (por defecto 255 caracteres).
