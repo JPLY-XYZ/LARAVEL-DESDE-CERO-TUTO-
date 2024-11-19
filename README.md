@@ -345,9 +345,10 @@ NombreModelo::all();
 # FASE 2: AÑADIR FUNCIONALIDAD REAL A LA WEB
 
 ## PASO 1: Configuracion de enrutamiento
-Antes de empezar a comfigurar nada, debemos entender para que sirve el directorio `ROUTES` y el archivo `web.php`. 
+Antes de empezar a configurar nada, debemos entender para que sirve el directorio `ROUTES` y el archivo `web.php`. 
 
 Este archivo sirve para indicar todos las rutas de nuestra web.
+
 ![LARAVEL12](https://github.com/user-attachments/assets/b8a8ba3e-66a4-4e6e-aa8e-f300d928314a)
 
 Para la configuracion de las rutas de nuestra web debemos usar la siguiente estructura:
@@ -356,6 +357,7 @@ Para la configuracion de las rutas de nuestra web debemos usar la siguiente estr
 Route::get('/', [Controlador::class,'Metodo']);
 ```
 `/` se puede modificar por la ruta necesaria esta es la que usaremos en nuestra web.
+
 ![LARAVEL13](https://github.com/user-attachments/assets/6e947397-704e-4d22-9bff-8d7e1d393e5b)
 
 Para el uso de esto, debemos tener claro la estructura, y que estamos usando unos controladores para cada pagina. En estos controladores se esta creando un metodo, el cual devuelve una vista, para ello usamos la siguiente estructura:
@@ -373,9 +375,11 @@ Debemos modificar el nombre del metodo, acorde a lo que queramos hacer.
 Ahora tenemos que crear la vista, para esto usamos los `documentos.blade.php`
 
 En estos documentos definimos la estructura html que monstraremos.
+
 ![LARAVEL15](https://github.com/user-attachments/assets/498cfc66-ea79-4a3e-9062-de2a2c3af3ad)
 
 Un ejemplo de un archivo `web.php` en el que estoy definiendo diferentes rutas.
+
 ![LARAVEL16](https://github.com/user-attachments/assets/f911249d-c1db-4be9-82cb-9810a63f3662)
 
 ## PASO 2: Instalacion de `livewire` o `brezee` para crear componentes
@@ -430,6 +434,7 @@ Para un desarrollo correcto debemos usar componentes para un mejor orden de la w
 php artisan make:livewire NombreDelComponente
 ```
 Con este comando se los crearan 2 archivos.
+
 ![LARAVEL21](https://github.com/user-attachments/assets/9c0c60ca-dd90-458f-a9ae-7750d1c80a29)
 El primero es el controlador, y el segundo la vista.
 
