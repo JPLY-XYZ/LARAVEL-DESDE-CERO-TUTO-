@@ -475,9 +475,10 @@ En los componentes podemos usar estructuras de control como:
 
 
 Para añadir este componente a nuesta web debemos usar la siguiente sintaxis:
-´´´html
+
+```html
 <livewire:NombreComponente />
-´´´
+```
 ![LARAVEL](https://github.com/user-attachments/assets/eea38089-4705-4320-be40-9d37fd77c8b6)
 
 
