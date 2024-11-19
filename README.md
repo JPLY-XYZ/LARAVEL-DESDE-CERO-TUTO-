@@ -464,27 +464,27 @@ En los componentes podemos usar estructuras de control como:
 ### Estructuras de control que puedes usar en las vistas de Laravel (Generado por IA)
 
 #### Condicionales
-`@if`: Si una condición es verdadera.
-`@else`: Si la condición no es verdadera.
-`@elseif`: Para agregar otra condición.
-`@unless`: Si la condición es falsa.
+- `@if`: Si una condición es verdadera.
+- `@else`: Si la condición no es verdadera.
+- `@elseif`: Para agregar otra condición.
+- `@unless`: Si la condición es falsa.
 
 #### Bucles
-`@foreach`: Para recorrer una lista de elementos.
-`@for`: Para repetir un bloque un número específico de veces.
-`@while`: Mientras una condición sea verdadera.
+- `@foreach`: Para recorrer una lista de elementos.
+- `@for`: Para repetir un bloque un número específico de veces.
+- `@while`: Mientras una condición sea verdadera.
 
 #### Switch
-`@switch`: Para manejar múltiples condiciones.
-    `@case`: Define un caso específico.
-    `@default`: Código que se ejecuta si no hay coincidencias.
+- `@switch`: Para manejar múltiples condiciones.
+-    `@case`: Define un caso específico.
+-    `@default`: Código que se ejecuta si no hay coincidencias.
 
 #### Verificaciones
-`@isset`: Verifica si una variable está definida.
-`@empty`: Verifica si una variable está vacía.
-`@auth`: Si el usuario está autenticado.
-`@guest`: Si el usuario no está autenticado.
-`condición ? valor_si_verdadero : valor_si_falso;`: Operador ternario.
+- `@isset`: Verifica si una variable está definida.
+- `@empty`: Verifica si una variable está vacía.
+- `@auth`: Si el usuario está autenticado.
+- `@guest`: Si el usuario no está autenticado.
+- `condición ? valor_si_verdadero : valor_si_falso;`: Operador ternario.
 
 
 Para añadir este componente a nuesta web debemos usar la siguiente sintaxis:
