@@ -344,6 +344,145 @@ NombreModelo::all();
 
 # FASE 2: AÑADIR FUNCIONALIDAD REAL A LA WEB
 
+## PASO 1: Configuracion de enrutamiento
+Antes de empezar a comfigurar nada, debemos entender para que sirve el directorio `ROUTES` y el archivo `web.php`. 
+
+Este archivo sirve para indicar todos las rutas de nuestra web.
+![LARAVEL12](https://github.com/user-attachments/assets/b8a8ba3e-66a4-4e6e-aa8e-f300d928314a)
+
+Para la configuracion de las rutas de nuestra web debemos usar la siguiente estructura:
+
+```php
+Route::get('/', [Controlador::class,'Metodo']);
+```
+`/` se puede modificar por la ruta necesaria esta es la que usaremos en nuestra web.
+![LARAVEL13](https://github.com/user-attachments/assets/6e947397-704e-4d22-9bff-8d7e1d393e5b)
+
+Para el uso de esto, debemos tener claro la estructura, y que estamos usando unos controladores para cada pagina. En estos controladores se esta creando un metodo, el cual devuelve una vista, para ello usamos la siguiente estructura:
+
+```php
+ public function NombreMetodo()
+    {
+        return view('NombreVista');
+    }   
+```
+Debemos modificar el nombre del metodo, acorde a lo que queramos hacer.
+
+![LARAVEL14](https://github.com/user-attachments/assets/3508f4cf-15ac-4988-bccd-aef247969446)
+
+Ahora tenemos que crear la vista, para esto usamos los `documentos.blade.php`
+
+En estos documentos definimos la estructura html que monstraremos.
+![LARAVEL15](https://github.com/user-attachments/assets/498cfc66-ea79-4a3e-9062-de2a2c3af3ad)
+
+Un ejemplo de un archivo `web.php` en el que estoy definiendo diferentes rutas.
+![LARAVEL16](https://github.com/user-attachments/assets/f911249d-c1db-4be9-82cb-9810a63f3662)
+
+## PASO 2: Instalacion de `livewire` o `brezee` para crear componentes
+
+En este paso empezaremos a crear componentes, para ello debemos usar alguna de estas librerias.
+
+Si no hemos creado el proyecto con el comando `laravel new NombreProyecto`, y lo hemos hecho con composer, debemos instalar el livewire con el siguiente comando:
+
+```bash
+php artisan jetstream:install livewire
+```
+
+En caso de haber usado el proyecto con el comando `laravel new NombreProyecto` ya habriamos seleccionado la libreria a usar.
+
+
+## PASO 3: Creacion de vistas personalizadas con su correspondiente controlador
+En laravel se usa el modelo vista controlador, para separar la logica de lo que se muestra.
+
+### Creacion controlador
+
+Empezamos creando el controlador de la vista usando el siguiente comando: 
+```bash
+php artisan make:controller NombreController
+```
+Con esto estariamos creando un archivo en el que podemos meter metodos para dar funcionamiento a nuestra web.
+
+![LARAVEL17](https://github.com/user-attachments/assets/7978b28e-02c6-4fcc-b45a-8f2c91c5e65b)
+En este ejemplo se esta creando un metodo que devuelve la vista `home`.
+
+### Creacion vista
+
+Para crear una vista no existe un comando, debemos hacerlo de manera manual, todas las vistas dependen de una ruta, y para ello se usa la carpeta `wiews`, si nuestra ruta esa en `\NombreRuta`, debemos hacerlo en esta misma carpeta.
+
+![LARAVEL18](https://github.com/user-attachments/assets/b19e5fdc-9bd9-4195-845e-4ce345b55fa2)
+En este ejemplo estamos creando la vista `home.blade.php`.
+
+Contenido de la vista:
+
+![LARAVEL19](https://github.com/user-attachments/assets/eceaa013-ba8c-4950-a647-4845796964ce)
+En esta imagen se muestra una base de una posible vista, para crearlo automaticamente podemos usar el atajo `!` en visual studio code.
+
+![LARAVEL20](https://github.com/user-attachments/assets/3b3afe9a-52df-411a-879f-d57ef33e31c1)
+
+
+## PASO4: Creacion de componentes con livewire
+
+Para un desarrollo correcto debemos usar componentes para un mejor orden de la web.
+
+### LIVEWIRE
+
+```bash
+php artisan make:livewire NombreDelComponente
+```
+Con este comando se los crearan 2 archivos.
+![LARAVEL21](https://github.com/user-attachments/assets/9c0c60ca-dd90-458f-a9ae-7750d1c80a29)
+El primero es el controlador, y el segundo la vista.
+
+Debemos configurarlo a nuestro gusto.
+
+![LARAVEL22](https://github.com/user-attachments/assets/247f76ea-2540-40de-b9e2-fa172ffabc2f)
+En este ejemplo hemos añadido el campo `name`, el cual sera accesible desde la vista.
+
+![LARAVEL23](https://github.com/user-attachments/assets/3bc1f25f-5dc4-455c-9f55-f6a95c8437ae)
+Todos los componentes tienen que tener un componente raiz, puede ser cualquier etiqueta, normalmente se usa un `div`.
+
+Para el uso de variables dentro de nuestra vista debemos usar la sintaxis:
+
+```html
+{{$NombreVariable}}
+```
+En los componentes podemos usar estructuras de control como:
+
+### Estructuras de control que puedes usar en las vistas de Laravel (Generado por IA)
+
+#### Condicionales
+`@if`: Si una condición es verdadera.
+`@else`: Si la condición no es verdadera.
+`@elseif`: Para agregar otra condición.
+`@unless`: Si la condición es falsa.
+
+#### Bucles
+`@foreach`: Para recorrer una lista de elementos.
+`@for`: Para repetir un bloque un número específico de veces.
+`@while`: Mientras una condición sea verdadera.
+
+#### Switch
+`@switch`: Para manejar múltiples condiciones.
+    `@case`: Define un caso específico.
+    `@default`: Código que se ejecuta si no hay coincidencias.
+
+#### Verificaciones
+`@isset`: Verifica si una variable está definida.
+`@empty`: Verifica si una variable está vacía.
+`@auth`: Si el usuario está autenticado.
+`@guest`: Si el usuario no está autenticado.
+`condición ? valor_si_verdadero : valor_si_falso;`: Operador ternario.
+
+
+Para añadir este componente a nuesta web debemos usar la siguiente sintaxis:
+´´´html
+<livewire:NombreComponente />
+´´´
+![LARAVEL](https://github.com/user-attachments/assets/eea38089-4705-4320-be40-9d37fd77c8b6)
+
+
+
+### BREZZE
 
 
 
