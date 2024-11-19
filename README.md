@@ -310,6 +310,7 @@ $this->call(NombreSeeder::class);
 En este ejemplo estamos llamando a los seeders de la clase user y task y estamos usando las factorias de ambas para crear 10.
 
 ! Si estamos usando factorias debemos añadir a nuestro modelo la linea `use Hasfactory;`
+
 ![LARAVEL11](https://github.com/user-attachments/assets/6f8549fe-b1ba-4826-92dc-1ff32acc0bb6)
 
 
@@ -320,6 +321,7 @@ php artisan migrate:fresh --seed
 ```
 Con el `migrate:fresh` estariamos generando las tablas de nuevo.
 Al añadir `--seed` estariamos ejecutando los seeder y factorias que esten configuradas.
+
 ![LARAVEL11](https://github.com/user-attachments/assets/b5a21540-9017-4b80-9beb-1e31dd010979)
 
 ## PASO 10: Comprobar Usuarios en Tinker o PhpMyadmin
@@ -407,6 +409,7 @@ php artisan make:controller NombreController
 Con esto estariamos creando un archivo en el que podemos meter metodos para dar funcionamiento a nuestra web.
 
 ![LARAVEL17](https://github.com/user-attachments/assets/7978b28e-02c6-4fcc-b45a-8f2c91c5e65b)
+
 En este ejemplo se esta creando un metodo que devuelve la vista `home`.
 
 ### Creacion vista
@@ -414,11 +417,13 @@ En este ejemplo se esta creando un metodo que devuelve la vista `home`.
 Para crear una vista no existe un comando, debemos hacerlo de manera manual, todas las vistas dependen de una ruta, y para ello se usa la carpeta `wiews`, si nuestra ruta esa en `\NombreRuta`, debemos hacerlo en esta misma carpeta.
 
 ![LARAVEL18](https://github.com/user-attachments/assets/b19e5fdc-9bd9-4195-845e-4ce345b55fa2)
+
 En este ejemplo estamos creando la vista `home.blade.php`.
 
 Contenido de la vista:
 
 ![LARAVEL19](https://github.com/user-attachments/assets/eceaa013-ba8c-4950-a647-4845796964ce)
+
 En esta imagen se muestra una base de una posible vista, para crearlo automaticamente podemos usar el atajo `!` en visual studio code.
 
 ![LARAVEL20](https://github.com/user-attachments/assets/3b3afe9a-52df-411a-879f-d57ef33e31c1)
@@ -436,14 +441,17 @@ php artisan make:livewire NombreDelComponente
 Con este comando se los crearan 2 archivos.
 
 ![LARAVEL21](https://github.com/user-attachments/assets/9c0c60ca-dd90-458f-a9ae-7750d1c80a29)
+
 El primero es el controlador, y el segundo la vista.
 
 Debemos configurarlo a nuestro gusto.
 
 ![LARAVEL22](https://github.com/user-attachments/assets/247f76ea-2540-40de-b9e2-fa172ffabc2f)
+
 En este ejemplo hemos añadido el campo `name`, el cual sera accesible desde la vista.
 
 ![LARAVEL23](https://github.com/user-attachments/assets/3bc1f25f-5dc4-455c-9f55-f6a95c8437ae)
+
 Todos los componentes tienen que tener un componente raiz, puede ser cualquier etiqueta, normalmente se usa un `div`.
 
 Para el uso de variables dentro de nuestra vista debemos usar la sintaxis:
@@ -484,6 +492,7 @@ Para añadir este componente a nuesta web debemos usar la siguiente sintaxis:
 ```html
 <livewire:NombreComponente />
 ```
+
 ![LARAVEL](https://github.com/user-attachments/assets/eea38089-4705-4320-be40-9d37fd77c8b6)
 
 
