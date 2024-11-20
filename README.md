@@ -755,6 +755,19 @@ Una vez hecho esto, ya podremos abrir nuestro modal, y cerrarlo con los botones.
 ![image](https://github.com/user-attachments/assets/c0534cc0-cae2-4822-8cbd-2a0ddc7e90df)
 
 
+Ahora debemos hacer la funcionalidad de cada boton puesto que ahora mismo solo podemos abrir y cerrar el modal.
+
+Vamos a empezar con el boton nuevo. Para ello, debemos modificar el modal, para que cumpla con nuestras necesidades, en este caso añadimos algunos campos al formulario.
+
+![image](https://github.com/user-attachments/assets/594ee783-ddbc-4b78-966d-e463bc026d8f)
+
+![image](https://github.com/user-attachments/assets/2c27becf-0753-4bb8-8e12-75e9b76d442c)
+
+
+Ya habiendo creado el modal, debemos programarlo, empezaremos creando las funciones necesarias.
+
+
+
 
 
 
