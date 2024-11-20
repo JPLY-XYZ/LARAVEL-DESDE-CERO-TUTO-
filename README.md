@@ -695,9 +695,64 @@ Usando {{$dato->dato}}, he sacado el los datos de cada tarea a su parte para que
 
 ![image](https://github.com/user-attachments/assets/0f04451c-d379-44a6-b28d-65b3255af349)
 
+Ahora vamos a programar el funcionamiento del modal en nuestro componente, para ello debemos crear otra variable, y darle el valor false, para que este cerrado por defecto:
+
+```php
+ public $modal = false;
+```
+![image](https://github.com/user-attachments/assets/556ae0f4-aca2-4711-a8ea-bbfc746bb625)
 
 
+Ahora tenemos que crear una nueva funcion para abrir el modal:
 
+```php
+  public function abrirModal(){
+        $this->modal = true;
+    }
+```
+Dentro de esta definimos a true nuestra variable modal.
+
+
+Ahora tenemos que crear una nueva funcion para cerrar el modal:
+
+```php
+  public function cerrarModal(){
+        $this->modal = false;
+    }
+```
+Dentro de esta definimos a false nuestra variable modal.
+
+![image](https://github.com/user-attachments/assets/864ae623-b4d5-4a0c-9780-1eac0de00a17)
+
+
+Ahora que ya tenemos la parte del controlador debemos pasar a la parte de la vista.
+
+
+Antes hemos creado un if para monstrar o no el modal, ahora debemos inficar con nuestro $modal esto.
+
+![image](https://github.com/user-attachments/assets/c3e80811-2ba4-4a89-b25e-85e8f9d717bd)
+
+Tambien tenemos que configurar el funcionamiento del boton crear, para ello tenemos que añadirle el siguiente codigo para que al pulsar se llame a la funcion abrir modal:
+
+```blade
+wire:click="abrirModal"
+```
+![image](https://github.com/user-attachments/assets/b99f29fe-e84a-433e-b53a-f8813ae7a575)
+
+y debemos añadir dentro de nuestro  modal algo para cerrarlo de la misma manera.
+
+```blade
+wire:click="cerrarModal"
+```
+![image](https://github.com/user-attachments/assets/173ae386-c4a5-4037-a0db-23035a75edd1)
+
+
+Una vez hecho esto, ya podremos abrir nuestro modal, y cerrarlo con los botones.
+
+
+![image](https://github.com/user-attachments/assets/ab052820-f6ba-463c-a3a2-f70075f5e2a0)
+
+![image](https://github.com/user-attachments/assets/c0534cc0-cae2-4822-8cbd-2a0ddc7e90df)
 
 
 
