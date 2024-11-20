@@ -429,7 +429,7 @@ En esta imagen se muestra una base de una posible vista, para crearlo automatica
 ![LARAVEL20](https://github.com/user-attachments/assets/3b3afe9a-52df-411a-879f-d57ef33e31c1)
 
 
-## PASO4: Creacion de componentes con livewire
+## PASO4: Creacion de componentes 
 
 Para un desarrollo correcto debemos usar componentes para un mejor orden de la web.
 
@@ -497,7 +497,132 @@ Para añadir este componente a nuesta web debemos usar la siguiente sintaxis:
 
 
 
-### BREZZE
+### COMPONENTES ANONIMOS
+
+
+AUN NO DESARROLLADO
+
+
+
+
+## PASO 5: Creacion componentes basicos.
+En este paso ya tenemos claro que necesitamos. Aqui hay unos ejemplos de algunas cosas simples.
+
+### TABLA CON MODAL BASICO
+Vamos a programrs un componente que contenga una tabla, que al dar a un boton se abra un modal( Un modal es un cuadro de formulario que aparece segun se va necesitando ).
+
+#### Paso 1: Creamos el componente livewire usando el siguiente comando:
+```bash
+php artisan make:livewire TablaTareasComponent
+```
+
+Cuando ejecutemos este comando se nos crearan 2 archivos. 
+
+![LARAVEL](https://github.com/user-attachments/assets/2a9cb859-f531-49e6-afd2-1c35473234ef)
+
+El primeo es su controlador, aqui pondremos la logica, y en el segundo pondremos la parte html, este es la vista.
+
+
+Una vez hecho esto, debemos ver donde queremos usar este componente, en nuestro caso lo vamos a poner en el dasboard.blade, que es la pagina que vemos una vez estamos logeados en la web, para ello debemos poner la linea:
+```blade
+<livewire:tabla-tareas-component/>
+```
+![image](https://github.com/user-attachments/assets/b62131ee-24bb-4d17-8c1c-6f76631f92e6)
+
+
+Empezamos a trabar con su vista, aqui debemos poner lo que queramos que se vea, en este caso vamos a cojer una tabla de la web: https://flowbite.com/ ya que tiene muchos componentes que usan tailwind gratuitos.
+
+![image](https://github.com/user-attachments/assets/8e11c484-8570-48f4-8a78-3bae85c9ea89)
+
+Copiaremos su codigo y lo pegaremos en nuestra vista.
+
+![image](https://github.com/user-attachments/assets/cfd9c8b6-abf9-4994-9ca5-98321a18351e)
+
+asi ya tendriamos una tabla dentro de nuestro componente, para verlo debemos lanzar nuestra web, y acceder con un usuario.
+
+![image](https://github.com/user-attachments/assets/d6ead550-fe41-42f0-8697-42645eede800)
+
+Si nuestra tabla no se ve igual, debemos ejecutar el comando:
+
+```bash
+npm install
+npm run dev
+```
+
+Este comando ejecuta nustro servidor node, y permite el uso de tailwind.
+
+![image](https://github.com/user-attachments/assets/77f9fd66-b518-4137-9b80-450977ee481a)
+
+una vez lanzado, comprobamos que se ve bien.
+
+en este ejemplo tambien vamos a usar un modal para ello tambien usaremos la web [https://flowbite.com/](https://tailwindui.com/), y elegiremos el que nos guste.
+
+![image](https://github.com/user-attachments/assets/4a6bfabc-e15f-4fb9-9ccb-39817997ff1a)
+
+de la misma manera que la tabla copiaremos su codigo en nuestra vista siempre asegurando que esta dentro del elemento div que nos crea por defecto.
+
+![image](https://github.com/user-attachments/assets/2e3dca83-a374-46e6-adec-7c8b30ea7aaf)
+
+Comprobamos que se vea correctamente.
+![image](https://github.com/user-attachments/assets/d005d014-de63-4f7f-b0b7-47b89f5f3051)
+
+
+Ahora es el momento de empezar a programar. para ello podemos hacerlo de varias maneras. Desde la vista(Logica muy simple) o desde el controlador(Pedir datos a bbdd o comportamiento de variables)
+
+Empezaremos desde la vista.
+
+Vamos a hacer un if para controlar que el modal aparezca o no, para ello buscamos nuestro modal en  la vista y añadimos antes de el la linea:
+
+```blade
+@if (false)
+
+-- html de nuestro modal --
+
+@endif
+```
+
+![image](https://github.com/user-attachments/assets/10ab54ef-c21c-4d0c-835f-f71fd21a1eff)
+
+En este caso con el false estamos indicando que el modal no se muestre, comprobamos que asi sea.
+
+![image](https://github.com/user-attachments/assets/af320a15-4c97-44b5-8d52-8632c1ed206b)
+
+Ahora tenemos que ver como construimos la tabla, en si una tabla se compone de varas partes:
+
+<h5>table</h5>
+Esta etiqueta define la tabla y contiene todos sus elementos.
+
+![image](https://github.com/user-attachments/assets/945e8981-fbd9-47de-b60b-ed6d7da34515)
+
+
+<h5>thead</h5>
+Esta etiqueta es la que conforma todos los datos que no cambian, es decir la parte de arriba de la tabla.
+
+![image](https://github.com/user-attachments/assets/29f7080e-6a51-4177-9fab-1ba0da1ee1e9)
+
+![image](https://github.com/user-attachments/assets/c820a21e-7248-4e6b-889d-e6799395faaa)
+
+Debemos tener claro cuales seran los elementos que se muestran en nuestra tabla.
+
+**tr** Estos elementos son las filas de la tabla.
+
+![image](https://github.com/user-attachments/assets/16dd58d7-2c0f-4bd3-bfcb-5af0f0daf3af)
+
+**td** Estos elementos son la columnas de la tabla
+
+![image](https://github.com/user-attachments/assets/f4a8f165-4171-446e-a304-b48dd76b227b)
+
+
+Debemos tener claro cuantas columnas debe tener la tabla, porque en el thead siempre habra 1 una fila.
+
+En nuestro caso vamos a usar 4 columnas, 1 para el id de la tarea, otra para el nombre de la tarea y otra para la descripcion de la tarea, y la ultima para los botones.
+
+
+
+
+
+
+
 
 
 
