@@ -617,6 +617,86 @@ Debemos tener claro cuantas columnas debe tener la tabla, porque en el thead sie
 
 En nuestro caso vamos a usar 4 columnas, 1 para el id de la tarea, otra para el nombre de la tarea y otra para la descripcion de la tarea, y la ultima para los botones.
 
+![image](https://github.com/user-attachments/assets/bbe01b10-c7d9-4be0-ab82-ab3f6dba8be0)
+
+![image](https://github.com/user-attachments/assets/2959f4f5-66bd-4a90-9166-ce960c4e891e)
+
+<h5>tbody</h5>
+Esta etiqueta es la que define el cuerpo de la tabla, aqui estan todas las entradas de la misma.
+
+![image](https://github.com/user-attachments/assets/f7a7d949-5744-42a6-8ed4-1cfe1e9b53ac)
+
+![image](https://github.com/user-attachments/assets/1b075284-4d7d-4225-ab0a-0fb168d3eb1d)
+
+
+**tr** Estos elementos son las filas de la tabla.
+
+![image](https://github.com/user-attachments/assets/ff28d02f-c131-4f5c-a310-430159fb3014)
+
+
+**td** Estos elementos son la columnas de la tabla
+
+![image](https://github.com/user-attachments/assets/c64daf88-6332-4db5-9b41-0546718092ef)
+
+Empezaremos a modificar estos ultimos, ya que la tabla se creara dinamicamente dependiendo de los datos.
+
+Empezamos viendo que campos debemos tener, ya sabemos cuales seran asique empezaremos añadiendo unos datos de ejemplo:
+
+![image](https://github.com/user-attachments/assets/ed77b9bf-fe2f-4d2c-a3b7-e5f184dc38b5)
+
+
+![image](https://github.com/user-attachments/assets/7557e370-65f7-4bdb-8420-51a27ca094a9)
+
+Una vez que ya hemos construido la tabla, debemos añadir un boton para crear una nueva tarea, en mi caso lo he hecho fuera de la tabla, a la derecha de la pantalla.
+
+![image](https://github.com/user-attachments/assets/2c231b67-f0f5-4255-885f-fbcf417120e7)
+
+
+Por el momento nuestra tabla ya tendra una forma asi:
+
+![image](https://github.com/user-attachments/assets/03f5fb28-120e-4795-b113-8cf6d5dba593)
+
+
+
+Ahora empezaremos a programar nuesto controlador. Iremos a el y empezaremos creando las variables que vallamos necesitando. 
+
+En este caso crearemos un array de tareas, aqui almacenaremos el listado de tareas que obtengamos de la base de datos:
+
+```php
+ public $tasks = [];
+```
+
+![image](https://github.com/user-attachments/assets/33c4e970-336d-4a59-b1fa-44f9a8fe3848)
+
+Tras esto haremos una funcion para obtener las tareas de la base de datos, esta la llamaremos mount:
+
+![image](https://github.com/user-attachments/assets/69c43569-74ac-4542-8f87-0ed4e1e80789)
+
+dentro de esta funcion añadiremos la linea de la consulta a la base de datos:
+
+```php
+ $this->tasks = Task::where('user_id', Auth::id())->get();
+```
+
+Con esta linea estamos almacenando la respuesta de la consulta de la base de datos en nuestra variable tarea.
+
+![image](https://github.com/user-attachments/assets/d28eb113-4090-4f31-b90e-e29a6333233a)
+
+Una vez que ya tenemos esto podemos volver a la vista, para añadir la funcionalidad de cargarlo en la tabla.
+
+Para ello buscamos el tr que contiene los td de la primera entrada, y debemos usar un bucle que recorra la variable $tasks que hemos creado.
+
+
+![image](https://github.com/user-attachments/assets/4b745eb2-638d-45ce-a7d5-35b9bdb0d33c)
+
+En este caso he usado el for each, usando tasks, y definiendo task por el elemento iterado.
+
+Usando {{$dato->dato}}, he sacado el los datos de cada tarea a su parte para que se muestre en la tabla, en este caso tengo 3 tareas, y se nos ha quedado asi.
+
+![image](https://github.com/user-attachments/assets/0f04451c-d379-44a6-b28d-65b3255af349)
+
+
+
 
 
 
