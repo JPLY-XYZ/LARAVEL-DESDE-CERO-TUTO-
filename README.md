@@ -823,9 +823,81 @@ Ahora debemos configurar su llamada desde el boton.
 
 ![image](https://github.com/user-attachments/assets/567a97f5-14c2-4cc8-be13-2a0e3f9f7545)
 
+Es interesante poner `wire:confirm="mensaje"` para que al pulsarlo nos muestre un aviso por pantalla.
+
+![image](https://github.com/user-attachments/assets/73ae03c8-cac2-4dbb-a819-564d2e9b6521)
+
+![image](https://github.com/user-attachments/assets/25a664bd-1918-402f-9d25-d180f37eea36)
+
 Aqui debemos indicarle en su parametro el id de la tarea a eliminar, usando nuestro elemento iterante task se lo pasamos como parametro.
 
 Probamos que funcione y si es asi pasamos a la siguiente funcion la que usaremos para modificar nuesta tarea.
+
+En esta funcion tiene mas pasos, ya que primero debemos crear una funcion que se le pase como parametro el id de la tarea.
+
+![image](https://github.com/user-attachments/assets/3f771abd-6b97-4d10-b2c2-83b824ba2b72)
+
+Tras esto, buscaremos con la funcion `find`, la tarea en especifico, y cojeremos los datos necesarios.
+
+![image](https://github.com/user-attachments/assets/dc498c58-78ca-4b5a-8d3b-225a311cfaec)
+
+Ahora debemos hacer que el boton modificar llame a esta funcion. 
+
+![image](https://github.com/user-attachments/assets/a0594479-91d0-4e29-b18e-f1dcae297d70)
+
+![image](https://github.com/user-attachments/assets/842658de-3940-472a-8914-b0e0e7230921)
+
+Como podemos observar aun nos muestra lo de crear nueva tarea y el boton nuevo, ahora debemos modificar esto, para ello voy a usar una variable que se ponga en true o false si esta en modo edicion, dando como valor por defecto falso.
+
+![image](https://github.com/user-attachments/assets/86f94070-dbed-45ef-9c27-9f451696b82d)
+
+Esta la usaremos en nuestra vista para cambiar valores segun su estado, pero antes debemos indicar cuando entra y sale del modo edicion.
+
+![image](https://github.com/user-attachments/assets/bde8ced1-1cff-49c3-be1e-52fb7d4cd1e8)
+
+En el metodo cerrar modal, debemos dar el valor a nuestra variable false, para que al cerrar el modal salga del modo edicion.
+
+![image](https://github.com/user-attachments/assets/a501a122-3ba9-41da-8e0f-c86c427e6ce9)
+
+
+Ahora vamos a nuestra vista, y empezamos a cambiar comportamientos dependiendo del estado de esta variable, podemos usar `IF`, o `operadores ternarios`
+
+![image](https://github.com/user-attachments/assets/88877c7f-5202-4b53-b51c-74f9c05b914a)
+
+![image](https://github.com/user-attachments/assets/f0eefa7f-e392-4edf-b77e-05d6e411ba8d)
+
+Ahora que ya lo tenemos podemos probarlo.
+
+![image](https://github.com/user-attachments/assets/72f30280-2d11-4f7a-a49f-436c4cce0976)
+
+
+Ahora tenemos que crear el metodo que modifica los datos en la base de datos, para ello volvemos a usar el metodo find para optener la tarea, y el metodo update, para actualizar los valores.
+
+![image](https://github.com/user-attachments/assets/28479c48-3a9a-4be0-a0a2-2bb052c31a81)
+
+
+Para acceder a la propiedad id, de la dieta seleccionada, debemos haber creado una variable de la misma, ya que no podemos acceder desde el modal a la id de una dieta en especifico, para ello modificamos el codigo de la funcion `modificarTarea`.
+
+![image](https://github.com/user-attachments/assets/0115decc-4bf3-40fc-844a-f4403e9fb83a)
+
+![image](https://github.com/user-attachments/assets/1a172fcd-701b-4ac6-8541-e7c68e1e1628)
+
+Una vez hecho esto, debemos poner la llamada desde el boton de la vista:
+
+![image](https://github.com/user-attachments/assets/c18fa595-49be-4c33-bb1a-17cc0536d4f4)
+
+Con esto ya tendriamos nuesto componente funcionando completamente, debemos comprobarlo.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
