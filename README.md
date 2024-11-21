@@ -857,8 +857,7 @@ Esta la usaremos en nuestra vista para cambiar valores segun su estado, pero ant
 
 En el metodo cerrar modal, debemos dar el valor a nuestra variable false, para que al cerrar el modal salga del modo edicion.
 
-![image](https://github.com/user-attachments/assets/a501a122-3ba9-41da-8e0f-c86c427e6ce9)
-
+![image](https://github.com/user-attachments/assets/3511ca77-0b49-49c4-995d-e2962a60deab)
 
 Ahora vamos a nuestra vista, y empezamos a cambiar comportamientos dependiendo del estado de esta variable, podemos usar `IF`, o `operadores ternarios`
 
@@ -884,7 +883,7 @@ Para acceder a la propiedad id, de la dieta seleccionada, debemos haber creado u
 
 Una vez hecho esto, debemos poner la llamada desde el boton de la vista:
 
-![image](https://github.com/user-attachments/assets/c18fa595-49be-4c33-bb1a-17cc0536d4f4)
+![image](https://github.com/user-attachments/assets/d4646e0a-cdc6-4969-90df-18e0eb892859)
 
 Con esto ya tendriamos nuesto componente funcionando completamente, debemos comprobarlo.
 
