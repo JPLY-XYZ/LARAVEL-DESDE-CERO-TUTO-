@@ -861,7 +861,7 @@ En el metodo cerrar modal, debemos dar el valor a nuestra variable false, para q
 
 Ahora vamos a nuestra vista, y empezamos a cambiar comportamientos dependiendo del estado de esta variable, podemos usar `IF`, o `operadores ternarios`
 
-![image](https://github.com/user-attachments/assets/88877c7f-5202-4b53-b51c-74f9c05b914a)
+![image](https://github.com/user-attachments/assets/ddbc0c0b-e0e7-4b53-aeb6-73c8fd5716bc)
 
 ![image](https://github.com/user-attachments/assets/f0eefa7f-e392-4edf-b77e-05d6e411ba8d)
 
