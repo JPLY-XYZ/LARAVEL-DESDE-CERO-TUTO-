@@ -764,7 +764,78 @@ Vamos a empezar con el boton nuevo. Para ello, debemos modificar el modal, para 
 ![image](https://github.com/user-attachments/assets/2c27becf-0753-4bb8-8e12-75e9b76d442c)
 
 
-Ya habiendo creado el modal, debemos programarlo, empezaremos creando las funciones necesarias.
+Ya habiendo creado el modal, debemos programarlo, empezaremos creando las funciones necesarias, enste caso vamos a usar 2, una abrira el modal y ponda los campos del formulario en blanco, y otra añadira los datos del formulario a la base de datos.
+
+Para el formulario necesitamos 2 variables, aqui se almacenaran los valores que se introducce en el formulario.
+
+![image](https://github.com/user-attachments/assets/89c9b63a-8881-46fb-8c08-3f6c9fe95f5e)
+
+
+Una vez hecho esto, empezaremos creando una funcion, esta se usara para abrir el modal y limpiar campos.
+
+![image](https://github.com/user-attachments/assets/fac9d372-f164-4c5c-939e-a20f62d7569f)
+
+Ahora tenemos que hacer la funcion de crear la tarea en la base de datos.
+
+![image](https://github.com/user-attachments/assets/0ba00ae6-70f3-467a-a794-39daea7b6369)
+
+Ahora es el momento de nuestra vista, vamos a ella y modificaremos el comportamiento de los botones y el formulario.
+
+Empezamos añadiendo la siguiente linea dentro del nuestros inputs `wire:model="nombreVariable"`, esto se usa para indicar que el valor que tenga, se usara en las variables con el mismo nombre creadas en nuestro controlador.
+
+![image](https://github.com/user-attachments/assets/df5b0aa2-56bb-403c-a5c3-f08b9bd1a2f5)
+
+Ahora debemos modificar los botones.
+
+![image](https://github.com/user-attachments/assets/5accc8c4-75a8-4014-8ed4-69d858c217a7)
+
+Modificamos el boton de nuevo de arriba a la izquierda, para que llame a la funcion `crearNuevaTarea`.
+
+![image](https://github.com/user-attachments/assets/390d7a21-1148-4093-a45a-f9ce7fa1eb4e)
+
+Modificamos el boton para añadir una nueva tarea dentro del modal para que llame a la funcion `insertarNuevaTarea`.
+
+
+Ahora debemos comprobar que funcione, en nuestro caso funciona, pero no recarga la pagina, pero podria fallar ya que tenemos que tener en el modelo el siguiente codigo.
+
+![image](https://github.com/user-attachments/assets/7081a2e1-c788-46a4-a990-5e0da854c44f)
+
+En esta parte se indica que campos son rellenables, debemos añadir todos los campos que usemos en un formulario.
+
+Para hacer que la pagina se recarge al añadir una nueva tarea debemos crear la siquiente funcion.
+
+![image](https://github.com/user-attachments/assets/1b6beff5-6e64-4b7a-9df0-d07e87a6b444)
+
+En esta funcion estamos haciendo una consulta a la base de datos. debemos llamar esta funcion justo despues de cerrar el modal.
+
+![image](https://github.com/user-attachments/assets/5ab6d6c3-9039-4684-9ada-998b0c13f77c)
+
+
+Con esto ya tendriamos la parte de crear una nueva tarea hecha, ahora tenemos que pasar a las funciones de eliminar y modificar.
+
+Empezaremos por eliminar, para ello debemos crear una nueva funcion a la que se le pase como parametro el id de la tarea que queremos eliminar.
+
+![image](https://github.com/user-attachments/assets/0ef95343-7018-4aeb-a90f-b69d7ca28dae)
+
+En esta funcion estamos usando el metodo `Find` que busca una tarea por su id, y el metodo `delete`, y posteriormente recargando la tabla.
+
+Ahora debemos configurar su llamada desde el boton.
+
+![image](https://github.com/user-attachments/assets/567a97f5-14c2-4cc8-be13-2a0e3f9f7545)
+
+Aqui debemos indicarle en su parametro el id de la tarea a eliminar, usando nuestro elemento iterante task se lo pasamos como parametro.
+
+Probamos que funcione y si es asi pasamos a la siguiente funcion la que usaremos para modificar nuesta tarea.
+
+
+
+
+
+
+
+
+
+
 
 
 
