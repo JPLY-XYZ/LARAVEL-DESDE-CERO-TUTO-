@@ -887,7 +887,11 @@ Una vez hecho esto, debemos poner la llamada desde el boton de la vista:
 
 Con esto ya tendriamos nuesto componente funcionando completamente, debemos comprobarlo.
 
+![image](https://github.com/user-attachments/assets/75c2104d-1843-4b4e-a126-1c5449e1b5e3)
 
+![image](https://github.com/user-attachments/assets/183a526b-129d-4872-a102-ac752163eb0f)
+
+![image](https://github.com/user-attachments/assets/08ef5c94-ec9f-42cc-abea-6ab0690c7016)
 
 
 
